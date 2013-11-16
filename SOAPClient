@@ -1,3 +1,7 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package handler;
 
 import javax.xml.soap.MessageFactory;
@@ -6,6 +10,7 @@ import javax.xml.soap.SOAPConnection;
 import javax.xml.soap.SOAPConnectionFactory;
 import javax.xml.soap.SOAPElement;
 import javax.xml.soap.SOAPEnvelope;
+import javax.xml.soap.SOAPHeader;
 import javax.xml.soap.SOAPMessage;
 import javax.xml.soap.SOAPPart;
 import javax.xml.transform.Source;
@@ -13,7 +18,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 
-public class SOAPClient 
+public class SOAPClient
 {
         /**
          * Method used to create the SOAP Request
@@ -25,13 +30,12 @@ public class SOAPClient
                 SOAPPart soapPart = soapMessage.getSOAPPart();
                 
                 /*
-
                 <?xml version="1.0" encoding="UTF-8"?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
                     <S:Header/>
                     <S:Body>
                         <ns2:add xmlns:ns2="http://calculator.me.org/">
                             <i>2</i>
-                            <j>2</j>
+                            <j>6</j>
                         </ns2:add>
                     </S:Body>
                 </S:Envelope>
@@ -41,6 +45,13 @@ public class SOAPClient
                 SOAPEnvelope envelope = soapPart.getEnvelope();
                 envelope.addNamespaceDeclaration("ns2", "http://calculator.me.org/");
 
+                // SOAP Header
+                /*
+                 * SOAPHeader soapHeader = envelope.getHeader();
+                 * SOAPElement soapHeaderElem = soapHeader.addChildElement("operation");
+                 * soapHeaderElem.addTextNode("Delete");
+                 */
+                
                 // SOAP Body
                 SOAPBody soapBody = envelope.getBody();
                 SOAPElement soapBodyElem = soapBody.addChildElement("add", "ns2");
@@ -86,7 +97,6 @@ public class SOAPClient
                         //Send SOAP Message to SOAP Server
                         String url = "http://localhost:8080/CalculatorWS/CalculatorWS?wsdl";
                         SOAPMessage soapResponse = soapConnection.call(createSOAPRequest(), url);
-                        
                         // Process the SOAP Response
                         printSOAPResponse(soapResponse);
                         
