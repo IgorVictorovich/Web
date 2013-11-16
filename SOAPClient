@@ -25,28 +25,16 @@ public class SOAPClient
                 SOAPPart soapPart = soapMessage.getSOAPPart();
                 
                 /*
-                Construct SOAP Request Message:
-                <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" 
-                        xmlns:sam="http://samples.axis2.techdive.in">
-                   <soap:Header/>
-                   <soap:Body>
-                      <sam:getStudentName>
-                         <!--Optional:-->
-                         <sam:rollNumber>3</sam:rollNumber>
-                      </sam:getStudentName>
-                   </soap:Body>
-                </soap:Envelope>
-                * 
-                * 
-                * <?xml version="1.0" encoding="UTF-8"?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
-    <S:Header/>
-    <S:Body>
-        <ns2:add xmlns:ns2="http://calculator.me.org/">
-            <i>2</i>
-            <j>2</j>
-        </ns2:add>
-    </S:Body>
-</S:Envelope>
+
+                <?xml version="1.0" encoding="UTF-8"?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+                    <S:Header/>
+                    <S:Body>
+                        <ns2:add xmlns:ns2="http://calculator.me.org/">
+                            <i>2</i>
+                            <j>2</j>
+                        </ns2:add>
+                    </S:Body>
+                </S:Envelope>
                  */
 
                 // SOAP Envelope
